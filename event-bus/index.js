@@ -6,10 +6,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const events = [];
+
 app.post("/events", (req, res) => {
   const event = req.body;
 
-  console.log(event.type, event.data);
+  events.push(event);
 
   axios.post("http://localhost:4000/events", event);
   axios.post("http://localhost:4100/events", event);
@@ -17,6 +19,10 @@ app.post("/events", (req, res) => {
   axios.post("http://localhost:4300/events", event);
 
   res.send({ status: "OK" });
+});
+
+app.get("/events", (req, res) => {
+  res.send(events);
 });
 
 app.listen(4500, () => {
