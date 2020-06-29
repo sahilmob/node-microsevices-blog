@@ -11,7 +11,6 @@ const commentsByPostId = {};
 
 app.get("/posts/:id/comments", (req, res) => {
   const { id } = req.params;
-  console.log(id, commentsByPostId[id]);
   res.send(commentsByPostId[id] || []);
 });
 
@@ -29,6 +28,11 @@ app.post("/posts/:id/comments", async (req, res) => {
   });
 
   res.status(201).send(comments);
+});
+
+app.post("/events", (req, res) => {
+  console.log("Event Received:", req.body.type);
+  res.send({});
 });
 
 app.listen(4100, () => {
