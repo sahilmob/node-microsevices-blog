@@ -26,7 +26,6 @@ app.post("/events", (req, res) => {
       id: id,
       content: content,
     });
-    posts[postId].comments = comments;
   }
 
   res.send({ status: "OK" });
