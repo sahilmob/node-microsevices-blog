@@ -49,7 +49,7 @@ app.listen(4200, async () => {
 
   console.log("getting events");
 
-  const res = await axios.get("http://localhost:4500/events");
+  const res = await axios.get("http://event-bus-srv:4500/events");
 
   console.log("Processing events");
 

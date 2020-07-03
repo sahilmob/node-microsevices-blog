@@ -12,7 +12,7 @@ app.post("/events", async (req, res) => {
     const status = content.includes("orange") ? "rejected" : "approved";
     console.log(status);
 
-    await axios.post("http://localhost:4500/events", {
+    await axios.post("http://event-bus-srv:4500/events", {
       type: "CommentModerated",
       data: {
         postId,
